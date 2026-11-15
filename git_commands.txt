@@ -1,103 +1,131 @@
-GIT COMMAND LOG - QUESTION 1
-Use these commands in order while following README_LOCAL_WORKFLOW.md.
-Non-Git file operations (copying/editing HTML files and creating folders) are documented separately in the README.
-Replace <USERNAME> and <REPOSITORY> with your own GitHub details.
+GIT COMMAND DOCUMENTATION — QUESTION 1
+Project: BrightPath Git Workflow
+Public repository: https://github.com/not-so-shubh/brightpath-git
+Working environment: local Mac Terminal; repository initialized locally before GitHub publication.
 
-01. git init -b main
-    Initialize a new local Git repository and name its first branch main.
+The entries below reproduce the Git commands used for this assignment. Some verification commands were run more than once. HTML changes, Python editing, and shell file/folder operations are not Git commands.
 
-02. git status
-    Display tracked, modified, and untracked files before the first commit.
+01. git --version
+    Verify that Git is installed and display its version (2.52.0 on this Mac).
 
-03. git add index.html about.html
-    Stage the two initial HTML files for the first snapshot.
+02. git init -b main
+    Initialize the local repository with its first branch named main.
 
-04. git commit -m "Initial site pages"
-    Save the initial version of both web pages.
+03. git status
+    Inspect the working tree and identify untracked, staged or modified files; repeated throughout the exercise.
 
-05. git add index.html
-    Stage the revised homepage after the first change.
+04. git add index.html about.html
+    Stage both HTML files before the initial commit.
 
-06. git commit -m "Update homepage content"
-    Save the second project snapshot on main.
+05. git commit -m "Initial commit: Add homepage and about page"
+    Save the original site files as the root commit (bf71a77).
 
-07. git branch feature
-    Create a new feature branch at the current main commit.
+06. git log --oneline
+    View a concise list of commits and their abbreviated hashes.
 
-08. git switch feature
-    Switch the working directory to the feature branch.
+07. git diff
+    Inspect unstaged modifications in an HTML file before committing.
 
-09. git add about.html
-    Stage the about-page improvements on feature.
+08. git add index.html
+    Stage a changed homepage for the second commit and later for the HTML correction.
 
-10. git commit -m "Add team details on feature branch"
-     Record work separately on the feature branch.
+09. git commit -m "Update homepage with Git learning introduction"
+    Record the second change to the homepage on main (4a87cb7).
 
-11. git switch main
-     Return to main before incorporating feature development.
+10. git branch feature
+    Create the separate feature branch from the current main commit.
 
-12. git merge --no-ff feature -m "Merge feature branch into main"
-     Merge the feature branch into main and force a visible merge commit.
+11. git switch feature
+    Switch the working tree to the feature branch.
 
-13. git log --oneline --graph --decorate --all
-     Display a compact commit graph showing both branches and the merge.
+12. git branch
+    Display local branches and identify the active branch with an asterisk.
 
-14. git branch -a
-     List local and remote-tracking branches to document branch activity.
+13. git add about.html
+    Stage the About page changes created on the feature branch.
 
-15. git add .gitignore
-     Stage ignore rules for *.log and temp/.
+14. git commit -m "Add feature branch improvements to about page"
+    Save the feature branch work (49b928c).
 
-16. git commit -m "Ignore logs and temporary files"
-     Track the .gitignore rules as a distinct commit.
+15. git switch main
+    Return to main before incorporating feature work.
 
-17. git check-ignore -v debug.log temp/sample.txt
-     Show the exact .gitignore patterns that exclude both test paths.
+16. git merge --no-ff feature -m "Merge feature branch into main"
+    Merge feature into main using an explicit merge commit (a680467) to preserve branch history.
 
-18. git status --ignored --short
-     Display ignored demo paths with !!, distinguishing them from tracked files.
+17. git log --all --oneline --graph --decorate
+    Display the connected history of main and feature including commit IDs and branch labels.
 
-19. git add index.html
-     Stage the deliberately temporary homepage banner.
+18. git check-ignore -v debug.log temp/notes.txt
+    Confirm that the *.log and temp/ rules in .gitignore exclude both test paths.
 
-20. git commit -m "Add temporary banner to demonstrate undo"
-     Commit a change that will be safely undone in a separate commit.
+19. git add .gitignore
+    Stage the newly created ignore-rule file.
 
-21. git revert --no-edit HEAD
-     Add a revert commit that reverses the latest commit without rewriting history.
+20. git commit -m "Add gitignore rules for logs and temporary files"
+    Save the .gitignore configuration as a separate commit (d675d21).
 
-22. git status
-     Check that the working directory is clean after the revert.
+21. git log --oneline -5
+    Inspect the five most recent commits after implementing .gitignore.
 
-23. git log --oneline --graph --decorate --all
-     Verify the temporary commit and the revert are both visible in history.
+22. git add revert-demo.txt
+    Stage a temporary file solely to demonstrate an undo operation.
 
-24. git add git_commands.txt
-     Stage this command-documentation file.
+23. git commit -m "Add temporary file to demonstrate Git undo"
+    Record the additional temporary-file commit (5468439).
 
-25. git commit -m "Document Git workflow commands"
-     Record command documentation in the repository before pushing.
+24. git revert --no-edit HEAD
+    Create a new commit that undoes the last commit without rewriting history (011c321).
 
-26. git remote add origin https://github.com/<USERNAME>/<REPOSITORY>.git
-     Link the local repository to the new empty PUBLIC GitHub repository.
+25. git log --oneline -7
+    Show that both the temporary commit and its revert remain in the history.
 
-27. git remote -v
-     Confirm the origin fetch/push address points to the intended repository.
+26. git diff --check
+    Check unstaged changes for trailing whitespace and similar formatting errors.
 
-28. git push -u origin main
-     Publish main and configure origin/main as its tracking branch.
+27. git diff -- index.html
+    Inspect the specific change moving the homepage paragraph inside the HTML body.
 
-29. git push origin feature
-     Also publish feature so GitHub visibly lists both branches.
+28. git commit -m "Fix homepage HTML structure"
+    Record the corrected homepage markup (a610a21).
 
-30. git status -sb
-     Verify main has a clean working tree and tracks origin/main.
+29. git add git_commands.txt
+    Stage this documentation file; used for its original commit and final correction.
 
-31. git log --oneline --graph --decorate --all
-     Display the final complete graph including local and remote branch labels.
+30. git commit -m "Document Git commands used in assignment"
+    Save the first version of the command documentation (4ca53da).
 
-32. git show --stat HEAD
-     Display files changed by the latest documentation commit.
+31. git log --oneline -3
+    Verify the latest three commits after adding documentation.
 
-33. git diff HEAD~1 HEAD -- git_commands.txt
-     Verify that the command file was added in the final local commit.
+32. git remote add origin https://github.com/not-so-shubh/brightpath-git.git
+    Connect the already-initialized local project to the empty public GitHub repository.
+
+33. git remote -v
+    Verify the origin fetch and push URLs.
+
+34. git push -u origin main
+    Publish main to GitHub and configure origin/main as its upstream tracking branch.
+
+35. git push origin feature
+    Publish feature separately so both branches are visible on GitHub.
+
+36. git branch -a
+    List the local branches and the remote-tracking branches origin/main and origin/feature.
+
+37. git status -sb
+    Display a compact working-tree and upstream tracking summary; ## main...origin/main shows tracking.
+
+38. git commit -m "Correct command log to match actual workflow"
+    Save this corrected, assignment-specific command documentation as a new commit.
+
+39. git push origin main
+    Publish the final documentation correction to the existing main branch on GitHub.
+
+ADDITIONAL REPOSITORY VERIFICATION
+- The initial repository was created on the Mac before the remote was configured.
+- Two source files were initially committed: index.html and about.html.
+- The feature branch has a distinct commit and main has a genuine two-parent merge commit.
+- .gitignore contains *.log and temp/; git check-ignore -v confirmed both rules.
+- The undo test was committed then reverted; revert-demo.txt is absent and the working tree was clean.
+- The public repository contains both main and feature branches.
