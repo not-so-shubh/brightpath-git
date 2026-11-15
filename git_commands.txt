@@ -1,0 +1,103 @@
+GIT COMMAND LOG - QUESTION 1
+Use these commands in order while following README_LOCAL_WORKFLOW.md.
+Non-Git file operations (copying/editing HTML files and creating folders) are documented separately in the README.
+Replace <USERNAME> and <REPOSITORY> with your own GitHub details.
+
+01. git init -b main
+    Initialize a new local Git repository and name its first branch main.
+
+02. git status
+    Display tracked, modified, and untracked files before the first commit.
+
+03. git add index.html about.html
+    Stage the two initial HTML files for the first snapshot.
+
+04. git commit -m "Initial site pages"
+    Save the initial version of both web pages.
+
+05. git add index.html
+    Stage the revised homepage after the first change.
+
+06. git commit -m "Update homepage content"
+    Save the second project snapshot on main.
+
+07. git branch feature
+    Create a new feature branch at the current main commit.
+
+08. git switch feature
+    Switch the working directory to the feature branch.
+
+09. git add about.html
+    Stage the about-page improvements on feature.
+
+10. git commit -m "Add team details on feature branch"
+     Record work separately on the feature branch.
+
+11. git switch main
+     Return to main before incorporating feature development.
+
+12. git merge --no-ff feature -m "Merge feature branch into main"
+     Merge the feature branch into main and force a visible merge commit.
+
+13. git log --oneline --graph --decorate --all
+     Display a compact commit graph showing both branches and the merge.
+
+14. git branch -a
+     List local and remote-tracking branches to document branch activity.
+
+15. git add .gitignore
+     Stage ignore rules for *.log and temp/.
+
+16. git commit -m "Ignore logs and temporary files"
+     Track the .gitignore rules as a distinct commit.
+
+17. git check-ignore -v debug.log temp/sample.txt
+     Show the exact .gitignore patterns that exclude both test paths.
+
+18. git status --ignored --short
+     Display ignored demo paths with !!, distinguishing them from tracked files.
+
+19. git add index.html
+     Stage the deliberately temporary homepage banner.
+
+20. git commit -m "Add temporary banner to demonstrate undo"
+     Commit a change that will be safely undone in a separate commit.
+
+21. git revert --no-edit HEAD
+     Add a revert commit that reverses the latest commit without rewriting history.
+
+22. git status
+     Check that the working directory is clean after the revert.
+
+23. git log --oneline --graph --decorate --all
+     Verify the temporary commit and the revert are both visible in history.
+
+24. git add git_commands.txt
+     Stage this command-documentation file.
+
+25. git commit -m "Document Git workflow commands"
+     Record command documentation in the repository before pushing.
+
+26. git remote add origin https://github.com/<USERNAME>/<REPOSITORY>.git
+     Link the local repository to the new empty PUBLIC GitHub repository.
+
+27. git remote -v
+     Confirm the origin fetch/push address points to the intended repository.
+
+28. git push -u origin main
+     Publish main and configure origin/main as its tracking branch.
+
+29. git push origin feature
+     Also publish feature so GitHub visibly lists both branches.
+
+30. git status -sb
+     Verify main has a clean working tree and tracks origin/main.
+
+31. git log --oneline --graph --decorate --all
+     Display the final complete graph including local and remote branch labels.
+
+32. git show --stat HEAD
+     Display files changed by the latest documentation commit.
+
+33. git diff HEAD~1 HEAD -- git_commands.txt
+     Verify that the command file was added in the final local commit.
